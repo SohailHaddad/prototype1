@@ -70,7 +70,6 @@ public class dbconnections {
 			} catch (Exception e) {
 				e.printStackTrace();
 		}
-		printAllQuestions(questions);
 		return questions;
 	}
 	public static ArrayList<String> showUpdatedquestion(String message)
