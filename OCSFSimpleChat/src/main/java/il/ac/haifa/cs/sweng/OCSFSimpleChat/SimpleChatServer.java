@@ -1,6 +1,9 @@
 package il.ac.haifa.cs.sweng.OCSFSimpleChat;
 import dbconnection.*;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,7 +26,6 @@ public class SimpleChatServer extends AbstractServer {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		    	   
 		            });
 		}
    
@@ -140,7 +142,12 @@ public class SimpleChatServer extends AbstractServer {
 	public static void main(String[] args) throws IOException {
 		if (args.length != 1) {
 			System.out.println("Required argument: <port>");
-		} else {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			String port=reader.readLine();
+			SimpleChatServer server = new SimpleChatServer(Integer.parseInt(port));
+			server.listen();
+		}
+		else {
 			SimpleChatServer server = new SimpleChatServer(Integer.parseInt(args[0]));
 			server.listen();
 		}

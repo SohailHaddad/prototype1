@@ -1,6 +1,8 @@
 package il.ac.haifa.cs.sweng.OCSFSimpleChat;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Logger;
 
 import il.ac.haifa.cs.sweng.OCSFSimpleChat.ocsf.client.AbstractClient;
@@ -41,6 +43,11 @@ public class SimpleChatClient extends AbstractClient {
 	public static void main(String[] args) throws IOException {
 		if (args.length != 2) {
 			System.out.println("Required arguments: <host> <port>");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			String host=reader.readLine();
+			String port=reader.readLine();
+			SimpleChatClient chatClient = new SimpleChatClient(host, Integer.parseInt(port));
+			chatClient.openConnection();
 		} else {
 			String host = args[0];
 			int port = Integer.parseInt(args[1]);
